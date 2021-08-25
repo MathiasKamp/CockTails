@@ -6,6 +6,9 @@ using System.Text;
 
 namespace CockTails
 {
+    /// <summary>
+    /// This class´s purpose is to be an object of a Drink
+    /// </summary>
     [Table("Drinks", Schema = "dbo")]
     public class Drinks
     {

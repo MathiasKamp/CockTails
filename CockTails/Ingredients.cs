@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CockTails
 {
+    /// <summary>
+    /// this Class's purpose is to be an object of an ingredient
+    /// </summary>
     [Table("Ingredients", Schema="dbo")]
     public class Ingredients
     {

@@ -1,11 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace CockTails
 {
+    /// <summary>
+    /// this class has the purpose of inserting and collecting data from the database
+    /// </summary>
     public static class DatabaseManager
     {
+        /// <summary>
+        /// this method returns all the ingredients
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns>List<Ingredients></returns>
         public static List<Ingredients> GetAllIngredients(CockTailContext ctx)
         {
             List<Ingredients> newIngredientsList = null;
@@ -19,6 +26,13 @@ namespace CockTails
 
             return newIngredientsList;
         }
+        /// <summary>
+        /// this method creates a new Drinks object in the database
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="name"></param>
+        /// <param name="ingredients"></param>
+        /// <returns>Bool</returns>
 
         public static bool AddNewDrink(CockTailContext ctx, string name, List<Ingredients> ingredients)
         {
@@ -36,6 +50,12 @@ namespace CockTails
         }
 
 
+        /// <summary>
+        /// this method returns a specific drink from the database based on the drinkId from the user
+        /// </summary>
+        /// <param name="drinkId"></param>
+        /// <param name="ctx"></param>
+        /// <returns>Drinks</returns>
         public static Drinks GetSpecificDrink(int drinkId, CockTailContext ctx)
         {
             ctx = new CockTailContext();
@@ -46,7 +66,12 @@ namespace CockTails
 
             return specificDrink.First();
         }
-
+        /// <summary>
+        /// this method adds a new ingredient to the database based on the name from the user
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ctx"></param>
+        /// <returns>bool</returns>
         public static bool AddNewIngredient(string name, CockTailContext ctx)
         {
             bool ingredientHasBeenAdded = false;
@@ -63,6 +88,12 @@ namespace CockTails
         
 
 
+        /// <summary>
+        /// this method gets a specific ingredient from the database based on the ingredientId from the user
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <param name="ctx"></param>
+        /// <returns>Ingredients</returns>
         public static Ingredients GetSpecificIngredient(int ingredientId, CockTailContext ctx)
         {
             ctx = new CockTailContext();
@@ -74,6 +105,11 @@ namespace CockTails
             return specificIngredient.First();
         }
 
+        /// <summary>
+        /// this method gets all the drinks objects from the database
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public static List<Drinks> GetAllDrinks(CockTailContext ctx)
         {
             ctx = new CockTailContext();
@@ -81,7 +117,13 @@ namespace CockTails
                 select drink).ToList();
             return drinks;
         }
-        
+        /// <summary>
+        /// this method updates an existing drink with a new List<Ingredients>
+        /// </summary>
+        /// <param name="drinkId"></param>
+        /// <param name="ctx"></param>
+        /// <param name="newIngredients"></param>
+        /// <returns>Drinks</returns>
         public static Drinks UpdateExistingDrinkWithNewIngredients(int drinkId, CockTailContext ctx, List<Ingredients> newIngredients)
         {
             var drinkToUpdate = GetSpecificDrink(drinkId, ctx);
@@ -97,6 +139,12 @@ namespace CockTails
             return drinkToUpdate;
         }
 
+        /// <summary>
+        ///  this method serach for a drinks name in the database based on a string from the user
+        /// </summary>
+        /// <param name="searchName"></param>
+        /// <param name="ctx"></param>
+        /// <returns>List<Drinks></returns>
         public static List<Drinks> SearchForDrink(string searchName, CockTailContext ctx)
         {
             ctx = new CockTailContext();
@@ -107,6 +155,13 @@ namespace CockTails
         }
 
 
+        /// <summary>
+        /// this method adds another ingredient to the drink object in the database
+        /// </summary>
+        /// <param name="drinkId"></param>
+        /// <param name="ctx"></param>
+        /// <param name="newIngredient"></param>
+        /// <returns>Drinks</returns>
         public static Drinks UpdateExistingDrinksIngredients(int drinkId, CockTailContext ctx,
             Ingredients newIngredient)
         {
@@ -125,6 +180,13 @@ namespace CockTails
         }
         
 
+        /// <summary>
+        /// this method updates an existing drinks name in the database
+        /// </summary>
+        /// <param name="drinkId"></param>
+        /// <param name="ctx"></param>
+        /// <param name="newName"></param>
+        /// <returns>Drinks</returns>
         public static Drinks UpdateExistingDrinksName(int drinkId, CockTailContext ctx, string newName)
         {
 
@@ -143,6 +205,12 @@ namespace CockTails
         }
         
 
+        /// <summary>
+        /// this method deletes an existing drink object in the database, based on the DrinkId from the user
+        /// </summary>
+        /// <param name="drinkIdToDelete"></param>
+        /// <param name="ctx"></param>
+        /// <returns>bool</returns>
         public static bool DeleteDrink(int drinkIdToDelete, CockTailContext ctx)
         {
             var drinkToDelete = ctx.Drinks.First(drink => drink.DrinkId == drinkIdToDelete);

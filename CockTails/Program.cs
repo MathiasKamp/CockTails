@@ -11,6 +11,7 @@ namespace CockTails
     {
         public static void Main()
         {
+            
             DrinkDatabaseInitializer drinkDatabaseInitializer = new DrinkDatabaseInitializer();
             CockTailContext ctx = new CockTailContext();
             Gui gui = new Gui();
@@ -32,7 +33,7 @@ namespace CockTails
 
                 switch (userInput)
                 {
-                    case 1:
+                    case 1: // user choose to see all drinks
                         Console.Clear();
                         var allDrinks = DrinkManager.GetAllDrinks(ctx);
                         foreach (var drinks in allDrinks)
@@ -43,7 +44,7 @@ namespace CockTails
                         Thread.Sleep(2000);
                         Console.Clear();
                         break;
-                    case 2:
+                    case 2: // user choose to delete a drink
                         Console.Clear();
                         Console.Write("Enter the id number of the drink you wish to delete :");
                         userInput = int.Parse(Console.ReadLine() ?? string.Empty);
@@ -66,13 +67,13 @@ namespace CockTails
                         Thread.Sleep(2000);
                         Console.Clear();
                         break;
-                    case 3:
+                    case 3: // user choose the new drink options 
                         Console.Clear();
                         gui.PrintNewDrinkOptions();
                         userInput = int.Parse(Console.ReadLine() ?? string.Empty);
                         switch (userInput)
                         {
-                            case 1:
+                            case 1: // user choose to see the current ingredients
                                 Console.Clear();
                                 Console.WriteLine("current ingredients :");
                                 var ingredients = DrinkManager.GetAllIngredients(ctx);
@@ -85,7 +86,7 @@ namespace CockTails
                                 Thread.Sleep(3000);
                                 Console.Clear();
                                 break;
-                            case 2:
+                            case 2: // user choose to add a new ingredient to the database
                                 Console.Clear();
                                 Console.Write("ingredient name :");
                                 string ingredientName = Console.ReadLine();
@@ -102,20 +103,20 @@ namespace CockTails
 
                                 Console.Clear();
                                 break;
-                            case 3:
+                            case 3: // user choose the option of creating a new drink in the database
                                 Console.Clear();
                                 gui.PrintCreateNewDrink();
                                 userInput = int.Parse(Console.ReadLine());
                                 switch (userInput)
                                 {
-                                    case 1:
+                                    case 1: // user choose the option to set the new drink's name
                                         Console.Clear();
                                         Console.Write("drink name :");
                                         drinkName = Console.ReadLine();
                                         Thread.Sleep(1000);
                                         Console.Clear();
                                         break;
-                                    case 2:
+                                    case 2: // user choose to add ingredients to the new drink
                                         Console.Clear();
                                         ingredientsForDrink = new List<Ingredients>();
                                         Console.Write("how many ingredients would you like to add : ");
@@ -136,7 +137,7 @@ namespace CockTails
                                         break;
 
 
-                                    case 3:
+                                    case 3: // user choose to create the drink with the name and ingreidnets, in the database 
                                         Console.Clear();
                                         Console.WriteLine("creating drink...");
                                         if (ingredientsForDrink != null && drinkName != null &&
@@ -155,7 +156,7 @@ namespace CockTails
                         }
 
                         break;
-                    case 4:
+                    case 4: // user choose to update an existing drink
                         Console.Clear();
                         Console.WriteLine("existing drinks...");
                         var allDrinksList = DrinkManager.GetAllDrinks(ctx);
@@ -174,7 +175,7 @@ namespace CockTails
                         userInput = int.Parse(Console.ReadLine());
                         switch (userInput)
                         {
-                            case 1:
+                            case 1: // user choose to update an existing drink's name
                                 Console.Clear();
                                 Console.Write("new name :");
                                 string newName = Console.ReadLine();
@@ -184,7 +185,7 @@ namespace CockTails
                                 Thread.Sleep(2000);
                                 Console.Clear();
                                 break;
-                            case 2:
+                            case 2: // user choose to add a new ingredient to an existing drink
                                 Console.Clear();
                                 Console.Write("new ingredient id : ");
                                 userInput = int.Parse(Console.ReadLine());
@@ -201,7 +202,7 @@ namespace CockTails
                                 Thread.Sleep(2000);
                                 Console.Clear();
                                 break;
-                            case 3:
+                            case 3: // user choose to update an existing drink's ingredients with a new List<Ingredients>
                                 Console.Clear();
                                 Console.Write("how many ingredients would you like to add :");
                                 userInput = int.Parse(Console.ReadLine());
@@ -227,7 +228,7 @@ namespace CockTails
                         }
 
                         break;
-                    case 5:
+                    case 5: // user choose to search for a drinks name
                         Console.Clear();
                         Console.Write("insert a name of a drink to search for :");
                         string searchNameDrink = Console.ReadLine();
@@ -251,7 +252,7 @@ namespace CockTails
                         Console.Clear();
 
                         break;
-                    case 6:
+                    case 6: // user choose to exit
                         start = false;
                         break;
                     default:

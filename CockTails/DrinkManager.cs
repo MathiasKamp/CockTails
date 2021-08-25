@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Security;
+
 
 namespace CockTails
 {
+    /// <summary>
+    /// This method acts as the business layer between the user and the database layer
+    /// </summary>
     public static class DrinkManager
     {
         public static List<Ingredients> GetAllIngredients(CockTailContext ctx)

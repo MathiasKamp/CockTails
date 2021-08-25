@@ -2,6 +2,9 @@
 
 namespace CockTails
 {
+    /// <summary>
+    /// this class's purpose for printing menu's to the console
+    /// </summary>
     public class Gui
     {
         public void PrintMainMenu()

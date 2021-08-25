@@ -4,8 +4,15 @@ using System.Linq;
 
 namespace CockTails
 {
+    /// <summary>
+    /// This class's purpose is to add some "default" data to the database just for testing purposes
+    /// </summary>
     public class DrinkDatabaseInitializer
     {
+        /// <summary>
+        /// This method adds some ingredients to the database
+        /// </summary>
+        /// <param name="ctx"></param>
         public void AddDefaultIngredients(CockTailContext ctx)
         {
             List<Ingredients> defaultIngredients = new List<Ingredients>();
@@ -46,10 +53,14 @@ namespace CockTails
             ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// this method adds a drink to the database
+        /// </summary>
+        /// <param name="ctx"></param>
         public void AddDefaultDrinks(CockTailContext ctx)
         {
             List<Drinks> defaultDrinks = new List<Drinks>();
-            defaultDrinks.Add(new Drinks() {DrinkName = "test", Ingredients = new List<Ingredients>(){DrinkManager.GetSpecificIngredient(3, ctx), DrinkManager.GetSpecificIngredient(4, ctx), DrinkManager.GetSpecificIngredient(5, ctx)}});
+            defaultDrinks.Add(new Drinks() {DrinkName = "Margarita", Ingredients = new List<Ingredients>(){DrinkManager.GetSpecificIngredient(3, ctx), DrinkManager.GetSpecificIngredient(4, ctx), DrinkManager.GetSpecificIngredient(5, ctx)}});
 
             ctx.Drinks.AddRange(defaultDrinks);
             ctx.SaveChanges();
